@@ -16,6 +16,7 @@
     "mako": "arch",
     "mise": "arch",
     "nautilus": "arch",
+    "nvim": "all",
     "omarchy": "arch",
     "opencode": "all",
     "qalculate": "arch",
