@@ -1,0 +1,46 @@
+# dotctl configuration file
+# This file defines your dotfiles packages and their target systems
+# For more information, visit: https://github.com/your-repo/dotctl
+
+packages:
+    bat: all
+    btop: arch
+    bunch: all
+    chromium: arch
+    environment.d: arch
+    fastfetch: arch
+    fcitx: arch
+    fcitx5: arch
+    ghostty: macos
+    github-copilot: all
+    go: all
+    hypr: arch
+    lazygit: all
+    mako: arch
+    mise: arch
+    nautilus: arch
+    nvim: all
+    omarchy: arch
+    opencode: all
+    qalculate: arch
+    raycast: macos
+    shell: all
+    sketchybar: macos
+    swayosd: arch
+    tmux: macos
+    walker: arch
+    waybar: arch
+    yay: arch
+    zsh: all
+global_excludes:
+    - .git
+    - .DS_Store
+    - '*.pyc'
+    - __pycache__
+    - gh
+stow_options:
+    - --verbose
+    - --target=/Users/logno
+github:
+    repository: logno-dev/dots
+    branch: main
