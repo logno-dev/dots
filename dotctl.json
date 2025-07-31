@@ -1,6 +1,5 @@
 {
   "packages": {
-    ".oh-my-zsh": "all",
     "bat": "all",
     "btop": "arch",
     "chromium": "arch",
@@ -20,14 +19,14 @@
     "opencode": "all",
     "qalculate": "arch",
     "raycast": "macos",
-    "shell": "all",
     "sketchybar": "macos",
     "swayosd": "arch",
     "tmux": "macos",
     "walker": "arch",
     "waybar": "arch",
     "yay": "arch",
-    "zsh": "all"
+    "zsh": "all",
+    "shell": "all"
   },
   "global_excludes": [
     ".git",
