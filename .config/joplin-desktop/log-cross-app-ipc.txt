@@ -1,4 +1,0 @@
-2025-05-24 12:31:07: Starting server using secret key: /Users/logno/.config/joplin-desktop/ipc_secret_key.txt
-2025-05-25 16:09:02: Starting server using secret key: /Users/logno/.config/joplin-desktop/ipc_secret_key.txt
-2025-05-26 10:57:39: Starting server using secret key: /Users/logno/.config/joplin-desktop/ipc_secret_key.txt
-2025-05-26 11:11:42: Starting server using secret key: /Users/logno/.config/joplin-desktop/ipc_secret_key.txt

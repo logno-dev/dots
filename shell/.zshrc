@@ -165,7 +165,7 @@ for file in ~/.config/zsh/functions/*.zsh; do
   [[ -r "$file" ]] && source "$file"
 done
 
-export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH:/home/logno/.turso:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH:$HOME/.turso:$PATH"
 export HYPRSHOT_DIR="$HOME/screenshots/"
 
 cat ~/.config/bunch

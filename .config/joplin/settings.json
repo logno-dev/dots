@@ -1,9 +1,0 @@
-{
-	"$schema": "https://joplinapp.org/schema/settings.json",
-	"altInstanceId": "",
-	"sync.8.url": "http://joplin-bg4s004g0g4k40ws4s4sw8g8.5.78.117.150.sslip.io",
-	"locale": "en_US",
-	"markdown.plugin.softbreaks": false,
-	"markdown.plugin.typographer": false,
-	"api.token": "fd81d62e01678a9ba9927ebd9a972b23ceba4fc81a52108c1f109f9a65e284be6450711a7695385755189f1ada454c3b2e4a8894bf33fc03cc190439e6ef7265"
-}

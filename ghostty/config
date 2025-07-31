@@ -1,0 +1,26 @@
+font-size = 16
+font-feature = -calt
+
+theme = Kanagawa Dragon
+
+background-opacity = 0.8
+
+background-blur-radius = 20
+
+window-padding-x = 8
+window-padding-y = 8
+
+keybind = cmd+e=new_tab
+
+keybind = cmd+t>j=new_split:down
+keybind = cmd+t>k=new_split:up
+keybind = cmd+g>j=goto_split:bottom
+keybind = cmd+g>k=goto_split:top
+
+keybind = cmd+w=close_surface
+
+window-save-state = never
+
+macos-option-as-alt = true
+
+keybind = cmd+x=csi:x
