@@ -2,6 +2,7 @@
   "packages": {
     "bat": "all",
     "btop": "arch",
+    "bunch": "all",
     "chromium": "arch",
     "environment.d": "arch",
     "fastfetch": "arch",
@@ -19,14 +20,14 @@
     "opencode": "all",
     "qalculate": "arch",
     "raycast": "macos",
+    "shell": "all",
     "sketchybar": "macos",
     "swayosd": "arch",
     "tmux": "macos",
     "walker": "arch",
     "waybar": "arch",
     "yay": "arch",
-    "zsh": "all",
-    "shell": "all"
+    "zsh": "all"
   },
   "global_excludes": [
     ".git",
@@ -37,7 +38,7 @@
   ],
   "stow_options": [
     "--verbose",
-    "--target=/home/logno"
+    "--target=/Users/logno"
   ],
   "github": {
     "repository": "logno-dev/dots",
