@@ -12,7 +12,7 @@
     ".config/yarn": "all",
     ".config/zsh": "all",
     ".oh-my-zsh": "all",
-    ".zshrc": "all"
+    "shell": "all"
   },
   "global_excludes": [
     ".git",
@@ -22,7 +22,7 @@
   ],
   "stow_options": [
     "--verbose",
-    "--target=/Users/logno"
+    "--target=/home/logno"
   ],
   "github": {
     "repository": "logno-dev/dots",
