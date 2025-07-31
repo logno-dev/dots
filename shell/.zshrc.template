@@ -141,4 +141,6 @@ bindkey '^Y' autosuggest-accept
 # bun completions
 [ -s "/Users/logno/.bun/_bun" ] && source "/Users/logno/.bun/_bun"
 
+cat ~/.config/bunch
+
 eval "$(zoxide init zsh)"
