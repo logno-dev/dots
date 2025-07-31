@@ -101,3 +101,9 @@ EOF
     return 1
   fi
 }
+
+gitall() {
+  git add -A
+  git commit -m "$(date)"
+  git push
+}
