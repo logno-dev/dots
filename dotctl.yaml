@@ -11,7 +11,7 @@ packages:
     fastfetch: arch
     fcitx: arch
     fcitx5: arch
-    ghostty: macos
+    ghostty: all
     github-copilot: all
     go: all
     hypr: arch
