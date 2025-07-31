@@ -1,14 +1,24 @@
 # System-specific prefix key configuration
+{{#if macos}}
+# macOS: Use Ctrl+x as prefix
+set-option -g prefix C-x
+unbind C-b
+bind-key C-x send-prefix
+{{/if}}
 
+{{#if arch}}
 # Arch Linux: Use Ctrl+d as prefix
 set-option -g prefix C-d
 unbind C-b
 bind-key C-d send-prefix
+{{/if}}
 
+{{#if linux}}
 # Linux: Use Ctrl+d as prefix
 set-option -g prefix C-d
 unbind C-b
 bind-key C-d send-prefix
+{{/if}}
 
 # Split panes using | and -
 bind | split-window -h
