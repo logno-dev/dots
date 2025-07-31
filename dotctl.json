@@ -1,0 +1,31 @@
+{
+  "packages": {
+    ".config/bat": "all",
+    ".config/gh": "all",
+    ".config/ghostty": "macos",
+    ".config/github-copilot": "all",
+    ".config/nvim": "all",
+    ".config/opencode": "all",
+    ".config/raycast": "macos",
+    ".config/sketchybar": "macos",
+    ".config/tmux": "macos",
+    ".config/yarn": "all",
+    ".config/zsh": "all",
+    ".oh-my-zsh": "all",
+    ".zshrc": "all"
+  },
+  "global_excludes": [
+    ".git",
+    ".DS_Store",
+    "*.pyc",
+    "__pycache__"
+  ],
+  "stow_options": [
+    "--verbose",
+    "--target=/Users/logno"
+  ],
+  "github": {
+    "repository": "logno-dev/dots",
+    "branch": "main"
+  }
+}

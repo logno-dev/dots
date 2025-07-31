@@ -1,0 +1,46 @@
+{
+	"$schema": "https://joplinapp.org/schema/settings.json",
+	"altInstanceId": "",
+	"editor.codeView": true,
+	"sync.target": 9,
+	"sync.9.path": "http://joplin-bg4s004g0g4k40ws4s4sw8g8.5.78.117.150.sslip.io",
+	"sync.9.username": "logan@logno.dev",
+	"locale": "en_US",
+	"timeFormat": "h:mm A",
+	"ocr.enabled": false,
+	"theme": 22,
+	"preferredDarkTheme": 22,
+	"markdown.plugin.softbreaks": false,
+	"markdown.plugin.typographer": false,
+	"ui.layout": {
+		"key": "root",
+		"children": [
+			{
+				"key": "sideBar",
+				"width": 250,
+				"visible": true
+			},
+			{
+				"key": "noteList",
+				"width": 250,
+				"visible": true
+			},
+			{
+				"key": "editor",
+				"visible": true
+			}
+		],
+		"visible": true
+	},
+	"clipperServer.autoStart": true,
+	"noteVisiblePanes": [
+		"editor"
+	],
+	"editor": "nvim",
+	"editor.keyboardMode": "vim",
+	"api.token": "fd81d62e01678a9ba9927ebd9a972b23ceba4fc81a52108c1f109f9a65e284be6450711a7695385755189f1ada454c3b2e4a8894bf33fc03cc190439e6ef7265",
+	"spellChecker.languages": [
+		"en-US"
+	],
+	"featureFlag.autoUpdaterServiceEnabled": false
+}
