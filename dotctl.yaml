@@ -24,7 +24,6 @@ packages:
     opencode: all
     qalculate: arch
     raycast: macos
-    shell: all
     sketchybar: macos
     swayosd: arch
     tmux: macos
@@ -32,6 +31,8 @@ packages:
     waybar: arch
     yay: arch
     zsh: all
+ # shell is a special package that symlinks the contents directly to the $HOME directory 
+    shell: all
 global_excludes:
     - .git
     - .DS_Store
