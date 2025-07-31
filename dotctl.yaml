@@ -19,11 +19,15 @@ packages:
     mako: arch
     mise: arch
     nautilus: arch
-    nvim: all
+    nvim:
+        systems:
+            - linux
+            - macos
     omarchy: arch
     opencode: all
     qalculate: arch
     raycast: macos
+    shell: all
     sketchybar: macos
     swayosd: arch
     tmux: macos
@@ -31,8 +35,6 @@ packages:
     waybar: arch
     yay: arch
     zsh: all
- # shell is a special package that symlinks the contents directly to the $HOME directory 
-    shell: all
 global_excludes:
     - .git
     - .DS_Store
@@ -41,7 +43,7 @@ global_excludes:
     - gh
 stow_options:
     - --verbose
-    - --target=/Users/logno
+    - --target=/home/logno
 github:
     repository: logno-dev/dots
     branch: main
