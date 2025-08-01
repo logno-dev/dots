@@ -34,7 +34,12 @@ packages:
     waybar: arch
     yay: arch
     zsh: all
-    .aerospace.toml: macos
+    .aerospace.toml:
+        system: macos
+        home: true
+    cron:
+        system: all
+        home: true
   # Shell is a special package whose contents map directly to the $HOME directory
     shell: all
 global_excludes:
