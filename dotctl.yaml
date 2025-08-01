@@ -27,7 +27,6 @@ packages:
     opencode: all
     qalculate: arch
     raycast: macos
-    shell: all
     sketchybar: macos
     swayosd: arch
     tmux: macos
@@ -35,6 +34,9 @@ packages:
     waybar: arch
     yay: arch
     zsh: all
+    .aerospace.toml: macos
+  # Shell is a special package whose contents map directly to the $HOME directory
+    shell: all
 global_excludes:
     - .git
     - .DS_Store
