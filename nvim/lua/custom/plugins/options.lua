@@ -22,4 +22,6 @@ vim.cmd 'set smartindent'
 
 vim.cmd 'command! W w'
 
+vim.g.netrw_keepdir = 0
+
 return {}
