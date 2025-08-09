@@ -24,7 +24,7 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 start-at-login = true
 
 [mode.main.binding]
-alt-a = 'exec-and-forget open -n /Applications/kitty.app'
+# alt-a = 'exec-and-forget open -n /Applications/kitty.app'
 
 # alt-j = 'focus left'
 # alt-k = 'focus down'
