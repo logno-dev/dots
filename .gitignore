@@ -37,3 +37,6 @@ node_modules/
 dist/
 build/
 out/
+
+# Github Copilot
+github-copilot/apps.json
