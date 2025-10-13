@@ -26,6 +26,8 @@ start-at-login = true
 [mode.main.binding]
 # alt-a = 'exec-and-forget open -n /Applications/kitty.app'
 
+alt-m = 'exec-and-forget sketchybar --reload'
+
 # alt-j = 'focus left'
 # alt-k = 'focus down'
 # alt-l = 'focus up'

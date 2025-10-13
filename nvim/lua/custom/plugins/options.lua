@@ -24,4 +24,10 @@ vim.cmd 'command! W w'
 
 vim.g.netrw_keepdir = 0
 
+-- enable markdown folding
+vim.cmd [[
+  autocmd FileType markdown setlocal foldmethod=expr
+  autocmd FileType markdown setlocal foldexpr=NestedMarkdownFolds()
+]]
+
 return {}

@@ -10,4 +10,8 @@ return {
       }
     end,
   },
+  {
+    'giuxtaposition/blink-cmp-copilot',
+    dependencies = 'copilot.lua',
+  },
 }

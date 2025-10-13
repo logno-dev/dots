@@ -4,6 +4,9 @@
   "model": "anthropic/claude-sonnet-4-20250514",
   "autoshare": false,
   "autoupdate": true,
+  "tui": {
+    "scroll_speed": 3
+  },
   "keybinds": {
     "leader": "ctrl+a",
     "editor_open": "<leader>e",
