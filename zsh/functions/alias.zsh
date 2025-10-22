@@ -20,3 +20,5 @@ alias pc="wakeonlan 2C:F0:5D:8A:43:68"
 alias note='nvim -c "normal G" ~/notes.wiki/general.org'
 
 alias cd="z"
+
+alias npm="pnpm"
