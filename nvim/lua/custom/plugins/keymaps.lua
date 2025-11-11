@@ -89,4 +89,41 @@ vim.keymap.set('i', '<C-c>', '<Esc>:wq<CR>', { desc = 'Save and quit from insert
 vim.keymap.set('n', '<C-z>', ':qa!<CR>', { desc = 'Quit!' })
 vim.keymap.set('i', '<C-z>', '<Esc>:qa!<CR>', { desc = 'Quit! from insert mode' })
 
+-- [[ Toggle Checkbox ]]
+-- Function to toggle checkboxes in markdown and org files
+local function toggle_checkbox()
+  local line = vim.api.nvim_get_current_line()
+  local new_line
+
+  -- Markdown checkboxes: - [ ] or - [x]
+  if line:match '^%s*[-*+]%s+%[[ xX]%]' then
+    if line:match '%[[ ]%]' then
+      new_line = line:gsub('%[[ ]%]', '[x]', 1)
+    else
+      new_line = line:gsub('%[[xX]%]', '[ ]', 1)
+    end
+    vim.api.nvim_set_current_line(new_line)
+    return
+  end
+
+  -- Org mode checkboxes: - [ ] or - [X]
+  if line:match '^%s*[-*+]%s+%[[ xX]%]' then
+    if line:match '%[[ ]%]' then
+      new_line = line:gsub('%[[ ]%]', '[X]', 1)
+    else
+      new_line = line:gsub('%[[xX]%]', '[ ]', 1)
+    end
+    vim.api.nvim_set_current_line(new_line)
+    return
+  end
+
+  -- Add checkbox if line starts with list marker but has no checkbox
+  if line:match '^%s*[-*+]%s+' and not line:match '%[.-%]' then
+    new_line = line:gsub('^(%s*[-*+]%s+)', '%1[ ] ', 1)
+    vim.api.nvim_set_current_line(new_line)
+  end
+end
+
+vim.keymap.set('n', '<leader>m', toggle_checkbox, { desc = 'Toggle [M]arkdown/Org checkbox' })
+
 return {}
