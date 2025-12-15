@@ -1,13 +1,16 @@
-
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# If you come from bash you might have to change your $PATH.
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Path to your oh-my-zsh installation.
+
  eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Uncomment the following line to use hyphen-insensitive completion.
+
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# under VCS as dirty. This makes repository status check for large repositories
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="re5et"
@@ -23,11 +26,11 @@ ZSH_THEME="re5et"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+# zstyle ':omz:update' mode disabled  # disable automatic updates
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+# or set a custom format using the strftime function format specifications,
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -53,23 +56,23 @@ ZSH_THEME="re5et"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+# HIST_STAMPS="mm/dd/yyyy"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications.
+source $ZSH/oh-my-zsh.sh
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+)
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+  zsh-syntax-highlighting
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
@@ -77,67 +80,89 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   vi-mode
-)
+  )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+if [[ -n $SSH_CONNECTION ]]; then
 
-# You may need to manually set your language environment
+else
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-   export EDITOR='nvim'
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
  fi
+# else
+  export EDITOR='nvim'
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+
+
+
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+done
+
+## Paths
+alias vim="nvim"
+alias code="nvim"
+export PATH="$BUN_INSTALL/bin:$PATH"
+alias keygen="openssl rand -base64 32 | tr -d '\n' | pbcopy && echo 'Key copied to clipboard.'"
+export PATH="$(go env GOPATH)/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+alias shadd="pnpm dlx shadcn@latest add ${@}"
+export PATH=$PATH:$ANDROID_HOME/emulator
+alias l="lsd -1"
+alias la="lsd -lA"
+
+
+bindkey '^Y' autosuggest-accept
+
+  git add -A
+  git commit -m "$(date)"
+  git push
+
+# bun completions
+alias gittip="glow ~/.config/gittips.md"
+
+t() {
+
+    tmux
+
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH="$HOME/.oh-my-zsh"
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# a theme from this variable instead of looking in $ZSH/themes/
+# HYPHEN_INSENSITIVE="true"
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# much, much faster.
+# You can set one of the optional three formats:
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# User configuration
+# export MANPATH="/usr/local/man:$MANPATH"
+# You may need to manually set your language environment
+  export EDITOR='vim'
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 v() { nvim "${1:-.}"; }
-
-alias vim="nvim"
-alias code="nvim"
-
-alias keygen="openssl rand -base64 32 | tr -d '\n' | pbcopy && echo 'Key copied to clipboard.'"
-
-
-alias shadd="pnpm dlx shadcn@latest add ${@}"
-
-alias l="lsd -1"
-alias la="lsd -lA"
 alias ls="lsd"
 alias lt="lsd --tree"
-
 gitall() {
-  git add -A
-  git commit -m "$(date)"
-  git push
 }
-
-alias gittip="glow ~/.config/gittips.md"
-
-t() {
   if [[ -z "$1" ]]; then
-    tmux
   else
     tmux new-session -s "$1"
   fi
 }
-
 ta() {
   if [[ -z "$1" ]]; then
     tmux attach
@@ -145,40 +170,25 @@ ta() {
     tmux attach -t "$1"
   fi
 }
-
 alias tk="tmux kill-session -t"
-
 alias tls="tmux ls"
-
-
 alias p="cd ~/projects"
-
 alias zal="cat ~/.config/my-aliases"
-
 alias pc="wakeonlan 2C:F0:5D:8A:43:68"
-
 alias note='nvim -c "normal G" ~/notes.wiki/general.org'
-
 alias cd="z"
-
 for file in ~/.config/zsh/functions/*.zsh; do
   [[ -r "$file" ]] && source "$file"
 done
-
 export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PATH:$HOME/.turso:$PATH"
 export HYPRSHOT_DIR="$HOME/screenshots/"
-
 cat ~/.config/bunch
-
 bindkey '^Y' autosuggest-accept
-
   export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # bun completions
 [ -s "/Users/logno/.bun/_bun" ] && source "/Users/logno/.bun/_bun"
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -188,5 +198,4 @@ export PATH="$HOME/.local/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 eval "$(zoxide init zsh)"
