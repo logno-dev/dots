@@ -1,0 +1,105 @@
+theme: dark-color
+pinnedFolders:
+  - name: Downloads
+    path: /Users/logno/Downloads
+  - name: blog
+    path: /Users/logno/projects/blog/src/content/blog
+  - name: notes
+    path: /Users/logno/notes
+keyboardShortcuts:
+  search:
+    key: f
+    ctrl: true
+    shift: false
+    alt: false
+    meta: false
+  newFile:
+    key: 'n'
+    ctrl: true
+  toggleEdit:
+    key: e
+    ctrl: true
+  save:
+    key: s
+    ctrl: true
+  deleteFile:
+    key: Delete
+    ctrl: true
+  toggleSidebar:
+    key: b
+    ctrl: true
+  toggleTOC:
+    key: t
+    ctrl: true
+  openSettings:
+    key: ','
+    ctrl: true
+  scrollDown:
+    key: j
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  scrollUp:
+    key: k
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  scrollLeft:
+    key: h
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  scrollRight:
+    key: l
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  halfPageDown:
+    key: d
+    ctrl: true
+    shift: false
+    alt: false
+    meta: false
+  halfPageUp:
+    key: u
+    ctrl: true
+    shift: false
+    alt: false
+    meta: false
+  fullPageDown:
+    key: ' '
+    shift: true
+  fullPageUp:
+    key: ' '
+  jumpToBottom:
+    key: G
+    ctrl: false
+    shift: true
+    alt: false
+    meta: false
+  inDocSearch:
+    key: /
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  nextSearchResult:
+    key: 'n'
+    ctrl: false
+    shift: false
+    alt: false
+    meta: false
+  prevSearchResult:
+    key: 'N'
+    ctrl: false
+    shift: true
+    alt: false
+    meta: false
+vimNavigation:
+  enabled: true
+  jumpToTopSequence: gg
+lastOpenedPath: /Users/logno/notes

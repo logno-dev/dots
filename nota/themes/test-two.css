@@ -1,0 +1,39 @@
+/* New Custom Theme for Markdown Navigator */
+
+/* ============================================ */
+/* APP UI COLORS & VARIABLES */
+/* ============================================ */
+:root {
+  /* Primary Colors */
+  --primary-color: #396cd8;
+  --primary-hover: #2d5bb7;
+  
+  /* Background Colors */
+  --bg-primary: #f6f6f6;
+  --bg-secondary: #e8e8e8;
+  --bg-tertiary: #d8d8d8;
+  --bg-white: #ffffff;
+  
+  /* Text Colors */
+  --text-primary: #0f0f0f;
+  --text-secondary: #666;
+  --text-muted: #999;
+  
+  /* Border Colors */
+  --border-color: #d0d0d0;
+  --border-hover: #396cd8;
+  
+  /* Status Colors */
+  --danger-color: #dc3545;
+  --danger-hover: #c82333;
+}
+
+/* Customize app UI elements using the variables above */
+/* See default.css for complete list of selectors */
+
+/* ============================================ */
+/* MARKDOWN VIEWER */
+/* ============================================ */
+.markdown-viewer {
+  /* Add your markdown styles here */
+}

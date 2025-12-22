@@ -1,0 +1,398 @@
+/* Kanagawa Theme - Inspired by the famous Japanese wave painting */
+
+:root {
+  --primary-color: #7e9cd8;
+  --primary-hover: #6a8fc0;
+  --bg-primary: #1f1f28;
+  --bg-secondary: #16161d;
+  --bg-tertiary: #2a2a37;
+  --bg-white: #1f1f28;
+  --text-primary: #dcd7ba;
+  --text-secondary: #727169;
+  --text-muted: #54546d;
+  --border-color: #54546d;
+  --border-hover: #7e9cd8;
+  --danger-color: #c34043;
+  --danger-hover: #e82424;
+}
+
+/* ============================================ */
+/* SIDEBAR */
+/* ============================================ */
+.sidebar {
+  background-color: var(--bg-secondary);
+  border-right-color: var(--border-color);
+}
+
+.section-header {
+  background-color: var(--bg-tertiary);
+}
+
+.section-header h3 {
+  color: var(--text-secondary);
+}
+
+.file-count {
+  background-color: #54546d;
+  color: #dcd7ba;
+}
+
+/* ============================================ */
+/* BUTTONS */
+/* ============================================ */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #16161d;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: var(--bg-white);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #2a2a37;
+  border-color: var(--border-hover);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: #dcd7ba;
+}
+
+.btn-danger:hover {
+  background-color: var(--danger-hover);
+}
+
+/* ============================================ */
+/* FILE LIST & NAVIGATION */
+/* ============================================ */
+.folder-item,
+.file-item {
+  color: var(--text-primary);
+}
+
+.folder-item:hover,
+.file-item:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.file-item.selected {
+  background-color: var(--primary-color);
+  color: #16161d;
+}
+
+.folder-path {
+  color: var(--text-primary);
+}
+
+.placeholder {
+  color: var(--text-muted);
+}
+
+.breadcrumb {
+  color: var(--text-secondary);
+  border-bottom-color: var(--bg-tertiary);
+}
+
+.breadcrumb:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* ============================================ */
+/* PINNED FOLDERS */
+/* ============================================ */
+.pinned-folder-item {
+  border-bottom-color: var(--bg-tertiary);
+}
+
+.pinned-folder-item:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.pinned-folder-name {
+  color: var(--text-primary);
+}
+
+.pinned-folder-path {
+  color: var(--text-secondary);
+}
+
+.item-icon {
+  color: var(--text-secondary);
+}
+
+.unpin-btn {
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+}
+
+.unpin-btn:hover {
+  color: var(--text-primary);
+}
+
+.btn-icon {
+  color: var(--text-secondary);
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================ */
+/* TOOLBAR */
+/* ============================================ */
+.toolbar {
+  background-color: var(--bg-secondary);
+  border-bottom-color: var(--border-color);
+}
+
+.current-file {
+  color: var(--text-primary);
+}
+
+.frontmatter-info {
+  color: var(--text-secondary);
+}
+
+.frontmatter-tag {
+  background-color: var(--bg-tertiary);
+  color: #dcd7ba;
+}
+
+/* Frontmatter container */
+.fm {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+}
+
+.fm-element {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-left-color: var(--primary-color);
+}
+
+.fm-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 8px;
+}
+
+.fm-description {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 12px;
+}
+
+.fm-date,
+.fm-author,
+.fm-tags,
+.fm-status {
+  color: var(--text-primary);
+  border-left-color: var(--primary-color);
+}
+
+
+/* ============================================ */
+/* THEME CONTROLS */
+/* ============================================ */
+.theme-dropdown {
+  background-color: var(--bg-white);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.theme-dropdown:hover,
+.theme-dropdown:focus {
+  border-color: var(--border-hover);
+}
+
+.theme-selector label,
+.editor-control-group label {
+  color: var(--text-secondary);
+}
+
+/* ============================================ */
+/* MODAL */
+/* ============================================ */
+.modal-content {
+  background-color: #2a2a37;
+}
+
+.modal-header {
+  border-bottom-color: var(--border-color);
+}
+
+.btn-icon-close {
+  color: var(--text-secondary);
+}
+
+.btn-icon-close:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.editor-control-group input {
+  border-color: var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.editor-control-group input:focus {
+  border-color: var(--border-hover);
+}
+
+#theme-css-editor {
+  border-color: var(--border-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+#theme-css-editor:focus {
+  border-color: var(--border-hover);
+}
+
+/* ============================================ */
+/* MARKDOWN VIEWER */
+/* ============================================ */
+.markdown-viewer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #dcd7ba;
+  background-color: var(--bg-primary);
+}
+
+.markdown-viewer h1,
+.markdown-viewer h2,
+.markdown-viewer h3,
+.markdown-viewer h4,
+.markdown-viewer h5,
+.markdown-viewer h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #7fb4ca;
+}
+
+.markdown-viewer h1 {
+  font-size: 2em;
+  border-bottom: 2px solid #7e9cd8;
+  padding-bottom: 0.3em;
+}
+
+.markdown-viewer h2 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #54546d;
+  padding-bottom: 0.3em;
+}
+
+.markdown-viewer h3 {
+  font-size: 1.25em;
+  color: #7aa89f;
+}
+
+.markdown-viewer p {
+  margin-bottom: 16px;
+}
+
+.markdown-viewer a {
+  color: #7fb4ca;
+  text-decoration: none;
+}
+
+.markdown-viewer a:hover {
+  text-decoration: underline;
+  color: #98bb6c;
+}
+
+.markdown-viewer code {
+  background-color: #2a2a37;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: #ffa066;
+}
+
+.markdown-viewer pre {
+  background-color: #16161d;
+  padding: 16px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 16px;
+  border: 1px solid #54546d;
+}
+
+.markdown-viewer pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #dcd7ba;
+}
+
+.markdown-viewer blockquote {
+  border-left: 4px solid #7e9cd8;
+  padding-left: 16px;
+  margin-left: 0;
+  margin-bottom: 16px;
+  color: #727169;
+  font-style: italic;
+}
+
+.markdown-viewer ul,
+.markdown-viewer ol {
+  margin-bottom: 16px;
+  padding-left: 2em;
+}
+
+.markdown-viewer li {
+  margin-bottom: 4px;
+}
+
+.markdown-viewer table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.markdown-viewer th,
+.markdown-viewer td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-viewer th {
+  background-color: var(--bg-tertiary);
+  font-weight: 600;
+  color: #7fb4ca;
+}
+
+.markdown-viewer img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.markdown-viewer hr {
+  border: none;
+  border-top: 2px solid #54546d;
+  margin: 24px 0;
+}

@@ -3,10 +3,16 @@
 # For more information, visit: https://github.com/your-repo/dotctl
 
 packages:
+    .aerospace.toml:
+        home: true
+        system: macos
     bat: all
     btop: arch
     bunch: all
     chromium: arch
+    cron:
+        home: true
+        system: all
     environment.d: arch
     fastfetch: arch
     fcitx: arch
@@ -19,6 +25,7 @@ packages:
     mako: arch
     mise: arch
     nautilus: arch
+    nota: all
     nvim:
         systems:
             - linux
@@ -27,6 +34,7 @@ packages:
     opencode: all
     qalculate: arch
     raycast: macos
+    shell: all
     sketchybar: macos
     swayosd: arch
     tmux: macos
@@ -34,14 +42,6 @@ packages:
     waybar: arch
     yay: arch
     zsh: all
-    .aerospace.toml:
-        system: macos
-        home: true
-    cron:
-        system: all
-        home: true
-  # Shell is a special package whose contents map directly to the $HOME directory
-    shell: all
 global_excludes:
     - .git
     - .DS_Store
@@ -50,7 +50,7 @@ global_excludes:
     - gh
 stow_options:
     - --verbose
-    - --target=/home/logno
+    - --target=/Users/logno
 github:
     repository: logno-dev/dots
     branch: main
