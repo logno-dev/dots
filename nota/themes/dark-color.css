@@ -436,6 +436,19 @@ body {
   color: var(--text-secondary);
 }
 
+.markdown-viewer img {
+  border-radius: 12px;
+  padding: .5rem;
+}
+
+.markdown-viewer table img {
+  min-width: 140px;
+}
+
+.special {
+  color: red;
+}
+
 /* ============================================ */
 /* MARKDOWN CHECKBOX LISTS */
 /* ============================================ */
