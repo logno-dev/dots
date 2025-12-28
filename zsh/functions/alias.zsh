@@ -22,3 +22,7 @@ alias note='nvim -c "normal G" ~/notes.wiki/general.org'
 alias cd="z"
 
 alias npm="pnpm"
+
+mcd() {
+  mkdir $1 && cd $1
+}

@@ -96,7 +96,7 @@ body {
 .toc-toggle-btn {
   color: var(--text-secondary);
   padding: 4px;
-  transition: all .3s;
+  transition: all .15s;
   border: solid 2px var(--border-color);
 }
 
@@ -349,6 +349,8 @@ body {
   color: #e5e5e5;
   background-color: var(--bg-primary);
   padding-top: 0;
+  margin: 0 auto;
+  max-width: 70rem;
 }
 
 .markdown-viewer h1,
@@ -436,6 +438,31 @@ body {
   color: var(--text-secondary);
 }
 
+.markdown-viewer table {
+  overflow: hidden;
+  border-radius: 12px;
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
+.markdown-viewer tr:nth-child(odd) {
+  background-color: #ffffff15;
+}
+
+.markdown-viewer tr:nth-child(even) {
+  background-color: #ffffff09;
+}
+
+.markdown-viewer tr:hover {
+  background-color: #ffffff23;
+}
+
+.markdown-viewer thead tr {
+  font-weight: 700;
+  font-size: 1.2em;
+  color: var(--title);
+}
+
 .markdown-viewer img {
   border-radius: 12px;
   padding: .5rem;
@@ -443,10 +470,6 @@ body {
 
 .markdown-viewer table img {
   min-width: 140px;
-}
-
-.special {
-  color: red;
 }
 
 /* ============================================ */
