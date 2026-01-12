@@ -18,8 +18,9 @@
   --h1: #FE6666;
   --h2: #FEDF7F;
   --h3: #00CCEC;
-  --h4: #EAEAED;
-  --h5: #F5F5F8;
+  --h4: #b18fcf;
+  --h5: #e6be97;
+  --h6: #a3a3a3;
 }
 
 html,
@@ -132,9 +133,11 @@ body {
   background-color: var(--bg-tertiary);
 }
 
-.file-item.selected {
-  background-color: var(--primary-color);
-  color: var(--text-muted);
+.file-item.selected,
+.file-item.selected .item-icon {
+  background-color: var(--h2);
+  color: var(--bg-tertiary);
+  font-weight: 600;
 }
 
 .folder-path {
@@ -238,14 +241,15 @@ body {
 
 .fm-title {
   display: block;
-  font-size: 30px;
+  font-size: 2.8em;
   font-weight: 700;
   color: var(--title);
   padding: 0;
   background: none;
   border: none;
   border-radius: 0;
-  margin-bottom: 8px;
+  margin-left: -18px;
+  margin-bottom: 6px;
 }
 
 .fm-description {
@@ -368,29 +372,36 @@ body {
 
 .markdown-viewer h1 {
   font-size: 2em;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.3em;
   color: var(--h1);
 }
 
 .markdown-viewer h2 {
-  font-size: 1.5em;
-  border-bottom: 1px solid var(--border-color);
+  font-size: 1.6em;
+  /* border-bottom: 2px solid var(--border-color); */
   padding-bottom: 0.3em;
   color: var(--h2);
 }
 
 .markdown-viewer h3 {
-  font-size: 1.25em;
+  font-size: 1.4em;
   color: var(--h3);
 }
 
 .markdown-viewer h4 {
+  font-size: 1.2em;
   color: var(--h4);
 }
 
 .markdown-viewer h5 {
+  font-size: 1.15em;
   color: var(--h5);
+}
+
+.markdown-viewer h6 {
+  font-size: 1.1em;
+  color: var(--h6)
 }
 
 .markdown-viewer p {
@@ -544,6 +555,6 @@ input[type="checkbox"]:not(:disabled):checked {
 
 .markdown-viewer hr {
   border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 24px 0;
+  border-top: 2px solid var(--border-color);
+  margin: 24px 40px;
 }

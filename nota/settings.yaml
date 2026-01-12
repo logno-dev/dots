@@ -6,6 +6,8 @@ pinnedFolders:
     path: /Users/logno/projects/blog/src/content/blog
   - name: notes
     path: /Users/logno/notes
+  - name: nvim
+    path: /Users/logno/.dotfiles/nvim
 keyboardShortcuts:
   search:
     key: f
@@ -102,4 +104,4 @@ keyboardShortcuts:
 vimNavigation:
   enabled: true
   jumpToTopSequence: gg
-lastOpenedPath: /Users/logno/notes
+lastOpenedPath: /Users/logno/.dotfiles/nvim

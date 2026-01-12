@@ -830,6 +830,7 @@ require('lazy').setup({
   },
   {
     'saghen/blink.cmp',
+    version = '0.*',
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
