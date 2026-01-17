@@ -55,21 +55,21 @@ return {
     },
     {
       "<leader>ah",
-      function() 
-        require("sidekick.cli").toggle({ 
+      function()
+        require("sidekick.cli").toggle({
           name = "opencode",
           win = { layout = "bottom", split = { height = 15 } }
-        }) 
+        })
       end,
       desc = "Sidekick Horizontal Split",
     },
     {
       "<leader>al",
-      function() 
-        require("sidekick.cli").toggle({ 
+      function()
+        require("sidekick.cli").toggle({
           name = "opencode",
           win = { layout = "right", split = { width = 80 } }
-        }) 
+        })
       end,
       desc = "Sidekick Vertical Split",
     },
@@ -81,7 +81,7 @@ return {
     },
     {
       "<C-j>",
-      "<C-\\><C-n><C-d>i", 
+      "<C-\\><C-n><C-d>i",
       mode = "t",
       desc = "Scroll down in terminal",
     },
@@ -104,4 +104,13 @@ return {
       desc = "Sidekick Toggle Claude",
     },
   },
+  config = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "netrw",
+      callback = function(ev)
+        vim.keymap.set("n", "<C-h>", "<C-w>h", { buffer = ev.buf, desc = "Window left" })
+        vim.keymap.set("n", "<C-l>", "<C-w>l", { buffer = ev.buf, desc = "Window right" })
+      end,
+    })
+  end,
 }

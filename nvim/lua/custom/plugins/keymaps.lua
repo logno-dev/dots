@@ -69,7 +69,140 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- [[ Terminal ]]
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<cr>', { desc = 'Toggle Terminal' })
+local terminal = require 'toggleterm.terminal'
+local ui = require 'toggleterm.ui'
+
+local function get_toggleterm_ids()
+  local ids = {}
+  for _, term in pairs(terminal.get_all()) do
+    if term.id then
+      table.insert(ids, term.id)
+    end
+  end
+  table.sort(ids)
+  return ids
+end
+
+local function get_current_toggleterm_id()
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, term in pairs(terminal.get_all()) do
+    if term.bufnr == current_buf then
+      return term.id
+    end
+  end
+  return vim.g.toggleterm_last_id
+end
+
+local function get_reuse_window()
+  if vim.bo.filetype == 'toggleterm' then
+    return vim.api.nvim_get_current_win()
+  end
+
+  local has_open, windows = ui.find_open_windows()
+  if has_open then
+    return windows[#windows].window
+  end
+
+  return nil
+end
+
+local function open_term_in_place(id)
+  local term = terminal.get_or_create_term(id)
+  local reuse_window = get_reuse_window()
+
+  if not reuse_window then
+    term:toggle()
+    return
+  end
+
+  if vim.bo.filetype ~= 'toggleterm' then
+    ui.set_origin_window()
+  end
+
+  if not term.bufnr or not vim.api.nvim_buf_is_valid(term.bufnr) then
+    term:spawn()
+  end
+
+  term.window = reuse_window
+  vim.api.nvim_set_current_win(reuse_window)
+  vim.api.nvim_win_set_buf(reuse_window, term.bufnr)
+  term:__set_options()
+  ui.hl_term(term)
+  if term.on_open then
+    term:on_open()
+  end
+end
+
+local function close_open_terms()
+  local has_open, windows = ui.find_open_windows()
+  if not has_open then
+    return false
+  end
+
+  for _, window in ipairs(windows) do
+    local term = terminal.get(window.term_id)
+    if term and term:is_open() then
+      term:close()
+    end
+  end
+
+  return true
+end
+
+local function toggle_term(id)
+  if close_open_terms() then
+    vim.g.toggleterm_last_id = id
+    return
+  end
+
+  open_term_in_place(id)
+  vim.g.toggleterm_last_id = id
+end
+
+local function new_term()
+  local ids = get_toggleterm_ids()
+  local next_id = #ids > 0 and ids[#ids] + 1 or 1
+  open_term_in_place(next_id)
+  vim.g.toggleterm_last_id = next_id
+end
+
+local function cycle_term(direction)
+  local ids = get_toggleterm_ids()
+  if #ids == 0 then
+    toggle_term(1)
+    return
+  end
+
+  local current_id = get_current_toggleterm_id() or ids[1]
+  local current_index = 1
+  for index, id in ipairs(ids) do
+    if id == current_id then
+      current_index = index
+      break
+    end
+  end
+
+  local next_index = current_index + direction
+  if next_index < 1 then
+    next_index = #ids
+  elseif next_index > #ids then
+    next_index = 1
+  end
+
+  open_term_in_place(ids[next_index])
+  vim.g.toggleterm_last_id = ids[next_index]
+end
+
+vim.keymap.set('n', '<leader>tt', function()
+  toggle_term(1)
+end, { desc = 'Toggle Terminal 1' })
+vim.keymap.set('n', '<leader>tn', new_term, { desc = 'New Terminal' })
+vim.keymap.set('n', '<leader>th', function()
+  cycle_term(-1)
+end, { desc = 'Previous Terminal' })
+vim.keymap.set('n', '<leader>tl', function()
+  cycle_term(1)
+end, { desc = 'Next Terminal' })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 -- Buffer Nav

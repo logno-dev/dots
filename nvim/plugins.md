@@ -124,6 +124,8 @@ Debug Adapter Protocol support.
 
 AI coding assistant integration (OpenCode/Claude).
 
+**Backend**: tmux (sidekick cli mux)
+
 **Keymaps**:
 - `<tab>` - Goto/Apply Next Edit Suggestion
 - `<leader>aa` - Sidekick Toggle OpenCode
