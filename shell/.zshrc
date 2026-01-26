@@ -4,10 +4,9 @@
 # Path to your oh-my-zsh installation.
 # Path to your oh-my-zsh installation.
 
- eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# Uncomment the following line to use hyphen-insensitive completion.
 
+# Arch Linux-specific setup
+export PATH="/usr/local/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # under VCS as dirty. This makes repository status check for large repositories
@@ -102,6 +101,10 @@ else
 # export ARCHFLAGS="-arch x86_64"
 
 
+# Arch-specific aliases
+alias pacman='sudo pacman'
+alias yay='yay --noconfirm'
+export HYPRSHOT_DIR="$HOME/screenshots/"
 
 
 # alias zshconfig="mate ~/.zshrc"
