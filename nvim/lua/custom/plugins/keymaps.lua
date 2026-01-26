@@ -259,4 +259,8 @@ end
 
 vim.keymap.set('n', '<leader>m', toggle_checkbox, { desc = 'Toggle [M]arkdown/Org checkbox' })
 
+-- Refresh all buffers
+
+vim.keymap.set('n', '<leader>r', ':bufdo e!<CR>', { desc = 'reload current buffer' })
+
 return {}

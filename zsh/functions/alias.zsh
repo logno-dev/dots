@@ -15,7 +15,7 @@ alias tls="tmux ls"
 
 alias p="cd ~/projects"
 
-alias pc="wakeonlan 2C:F0:5D:8A:43:68"
+alias pc="wakeonlan A0:AD:9F:31:37:00"
 
 alias note='nvim -c "normal G" ~/notes.wiki/general.org'
 

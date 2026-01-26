@@ -558,3 +558,99 @@ input[type="checkbox"]:not(:disabled):checked {
   border-top: 2px solid var(--border-color);
   margin: 24px 40px;
 }
+
+/* Table list in TOC panel */
+
+.toc-panel.db-mode {
+  background: var(--bg-secondary);
+}
+
+.toc-panel.db-mode #toc-content {
+  background: var(--bg-secondary);
+}
+
+.toc-panel.db-mode .db-table-list {
+  background: var(--bg-secondary);
+}
+
+.db-table-button {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.db-table-button.active {
+  border-color: var(--primary-color);
+}
+
+/* Database viewer layout */
+
+.db-viewer {
+  background: var(--bg-primary);
+}
+
+.db-viewer-header {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.db-viewer-path {
+  color: var(--text-secondary);
+}
+
+.db-viewer-actions {
+  color: var(--text-primary);
+}
+
+.db-table-content {
+  background: var(--bg-primary);
+}
+
+.db-table-header h3 {
+  color: var(--text-primary);
+}
+
+.db-table-actions {
+  color: var(--text-secondary);
+}
+
+.db-table-grid table {
+  border-color: var(--border-color);
+}
+
+.db-table-grid th,
+.db-table-grid td {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.db-table-grid td {
+  padding: 0;
+}
+
+.db-row-actions {
+  color: var(--text-primary);
+
+  .btn-icon-small {
+    color: var(--text-secondary);
+    margin: 0 auto;
+  }
+}
+
+
+.db-row-add-btn {
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.db-add-row,
+.db-add-row-cell {
+  background: var(--bg-secondary);
+}
+
+.db-cell-active {
+  border-color: var(--primary-color);
+}
+
+.db-fk-input {
+  color: var(--text-primary);
+}

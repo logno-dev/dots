@@ -119,26 +119,29 @@ Debug Adapter Protocol support.
 **Installed Adapters**:
 - delve (Go debugger)
 
-### Sidekick (AI Assistant)
-**Plugin**: folke/sidekick.nvim
+### OpenCode (AI Assistant)
+**Plugin**: NickvanDyke/opencode.nvim
 
-AI coding assistant integration (OpenCode/Claude).
+AI coding assistant integration (OpenCode).
 
-**Backend**: tmux (sidekick cli mux)
+**Provider**: tmux
 
 **Keymaps**:
-- `<tab>` - Goto/Apply Next Edit Suggestion
-- `<leader>aa` - Sidekick Toggle OpenCode
-- `<leader>as` - Select CLI
+- `<leader>aa` - Toggle OpenCode
+- `<leader>as` - Select OpenCode Action
 - `<leader>at` - Send This (visual/normal)
 - `<leader>av` - Send Visual Selection
-- `<leader>ah` - Sidekick Horizontal Split
-- `<leader>al` - Sidekick Vertical Split
-- `<leader>ap` - Sidekick Select Prompt
-- `<c-.>` - Sidekick Switch Focus
-- `<leader>ac` - Sidekick Toggle Claude
+- `<leader>ah` - Toggle OpenCode (horizontal)
+- `<leader>al` - Toggle OpenCode (vertical)
+- `<leader>ap` - Select OpenCode Prompt
+- `<c-.>` - Toggle/Focus OpenCode
+- `<leader>ac` - Toggle OpenCode
 - `<C-k>` (terminal) - Scroll up in terminal
 - `<C-j>` (terminal) - Scroll down in terminal
+- `<C-a>` - Ask OpenCode
+- `<C-x>` - Execute OpenCode action
+- `go` - Add range to OpenCode
+- `goo` - Add line to OpenCode
 
 ## Editing Plugins
 
