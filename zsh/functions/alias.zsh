@@ -26,3 +26,5 @@ alias npm="pnpm"
 mcd() {
   mkdir $1 && cd $1
 }
+
+alias lagrep="la | grep"
