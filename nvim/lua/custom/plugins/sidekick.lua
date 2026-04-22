@@ -5,13 +5,94 @@ return {
     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
   },
   config = function()
+    local fallback = require("opencode.terminal")
+
+    local function tmux_available()
+      return vim.fn.executable("tmux") == 1 and vim.env.TMUX and vim.env.TMUX ~= ""
+    end
+
+    local opencode_pane_id
+
+    local function tmux_pane_exists(pane_id)
+      if not pane_id or pane_id == "" then
+        return false
+      end
+
+      local panes = vim.fn.system({ "tmux", "list-panes", "-a", "-F", "#{pane_id}" })
+      if vim.v.shell_error ~= 0 then
+        return false
+      end
+
+      for _, pane in ipairs(vim.split(panes, "\n", { trimempty = true })) do
+        if pane == pane_id then
+          return true
+        end
+      end
+
+      return false
+    end
+
+    local function tmux_start()
+      if tmux_pane_exists(opencode_pane_id) then
+        return
+      end
+
+      local pane = vim.fn.system({ "tmux", "split-window", "-h", "-p", "50", "-d", "-P", "-F", "#{pane_id}", "opencode --port" })
+      if vim.v.shell_error == 0 then
+        opencode_pane_id = vim.trim(pane)
+      end
+    end
+
+    local function tmux_toggle()
+      if not tmux_pane_exists(opencode_pane_id) then
+      local pane = vim.fn.system({ "tmux", "split-window", "-h", "-p", "50", "-P", "-F", "#{pane_id}", "opencode --port" })
+        if vim.v.shell_error == 0 then
+          opencode_pane_id = vim.trim(pane)
+        end
+        return
+      end
+
+      local current_pane = vim.trim(vim.fn.system({ "tmux", "display-message", "-p", "#{pane_id}" }))
+      if current_pane == opencode_pane_id then
+        vim.fn.system({ "tmux", "select-pane", "-l" })
+      else
+        vim.fn.system({ "tmux", "select-pane", "-t", opencode_pane_id })
+      end
+    end
+
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      provider = {
-        enabled = "tmux",
-        tmux = {
-          -- uses default tmux settings
-        },
+      server = {
+        start = function()
+          if tmux_available() then
+            tmux_start()
+          else
+            fallback.open("opencode --port", {
+              split = "right",
+              width = math.floor(vim.o.columns * 0.35),
+            })
+          end
+        end,
+        stop = function()
+          if tmux_available() then
+            if tmux_pane_exists(opencode_pane_id) then
+              vim.fn.system({ "tmux", "kill-pane", "-t", opencode_pane_id })
+            end
+            opencode_pane_id = nil
+          else
+            fallback.close()
+          end
+        end,
+        toggle = function()
+          if tmux_available() then
+            tmux_toggle()
+          else
+            fallback.toggle("opencode --port", {
+              split = "right",
+              width = math.floor(vim.o.columns * 0.35),
+            })
+          end
+        end,
       },
     }
 
@@ -34,10 +115,10 @@ return {
     vim.keymap.set({ "n", "x" }, "<leader>as", function() opencode.select() end, { desc = "Select OpenCode Action" })
     vim.keymap.set({ "n", "x" }, "<leader>ap", function() opencode.select() end, { desc = "Select OpenCode Prompt" })
 
-    -- Horizontal split (was <leader>ah) - opencode.nvim handles this via provider config
+    -- Horizontal split (was <leader>ah) - opencode.nvim handles this via server config
     vim.keymap.set("n", "<leader>ah", function() opencode.toggle() end, { desc = "Toggle OpenCode (horizontal)" })
 
-    -- Vertical split (was <leader>al) - opencode.nvim handles this via provider config
+    -- Vertical split (was <leader>al) - opencode.nvim handles this via server config
     vim.keymap.set("n", "<leader>al", function() opencode.toggle() end, { desc = "Toggle OpenCode (vertical)" })
 
     -- Switch focus (was <c-.>)

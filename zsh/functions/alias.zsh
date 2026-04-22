@@ -28,3 +28,6 @@ mcd() {
 }
 
 alias lagrep="la | grep"
+
+alias phone="scrcpy"
+

@@ -8,40 +8,51 @@ NOTE_DIRS=(
 
 # Iterate over each directory and sync
 sync_ok=true
+LOG_FILE="$HOME/Library/Logs/note-sync.log"
+
+log() {
+  local message="$1"
+  printf "%s %s\n" "$(date '+%Y-%m-%d %H:%M:%S')" "$message" | tee -a "$LOG_FILE"
+}
+
+log "Note sync started"
 
 for dir in "${NOTE_DIRS[@]}"; do
   if [[ ! -d "$dir" ]]; then
-    echo "Directory $dir does not exist, skipping..."
+    log "Directory $dir does not exist, skipping..."
     continue
   fi
 
-  echo "Syncing $dir..."
+  log "Syncing $dir..."
   cd "$dir" || continue
 
   # Check if there are any changes to commit
   if [[ -n $(git status --porcelain) ]]; then
-    if ! git add -A; then
+    if ! output=$(git add -A 2>&1); then
+      log "git add failed in $dir: $output"
       sync_ok=false
       continue
     fi
 
-    if ! git commit -m "$(date)"; then
+    if ! output=$(git commit -m "$(date)" 2>&1); then
+      log "git commit failed in $dir: $output"
       sync_ok=false
       continue
     fi
 
-    if ! git push; then
+    if ! output=$(git push 2>&1); then
+      log "git push failed in $dir: $output"
       sync_ok=false
       continue
     fi
   else
-    echo "No changes to commit in $dir"
+    log "No changes to commit in $dir"
   fi
 done
 
 if [[ "$sync_ok" == "true" ]]; then
-  terminal-notifier -title "Note Sync" -message "Sync completed successfully"
+  log "Note sync completed successfully"
 else
-  terminal-notifier -title "Note Sync" -message "Sync failed for one or more directories"
+  log "Note sync failed for one or more directories"
   exit 1
 fi
