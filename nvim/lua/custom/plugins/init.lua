@@ -178,8 +178,32 @@ return {
     'logno-dev/header-level.nvim',
     name = 'header-level',
     ft = { 'markdown', 'mdx' },
+    keys = {
+      {
+        '<leader>mh',
+        function()
+          require('header-level').toggle()
+        end,
+        desc = 'Toggle header level display',
+      },
+      {
+        '<leader>mt',
+        function()
+          require('header-level').toggle_tree()
+        end,
+        desc = 'Toggle header tree outline',
+      },
+      {
+        '<leader>mv',
+        function()
+          require('header-level').toggle_virtual_text()
+        end,
+        desc = 'Toggle header virtual text',
+      },
+    },
     config = function()
       require('header-level').setup {
+        keymaps = false,
         show_virtual_text = false, -- Show level as virtual text at end of line
         show_header_tree = true,
         virtual_text_position = 'fixed_corner',

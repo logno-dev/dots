@@ -104,4 +104,4 @@ keyboardShortcuts:
 vimNavigation:
   enabled: true
   jumpToTopSequence: gg
-lastOpenedPath: /Users/logno/notes
+lastOpenedPath: /Users/logno/.dotfiles/nvim
