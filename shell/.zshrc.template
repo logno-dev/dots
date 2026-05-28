@@ -70,14 +70,12 @@ ZSH_THEME="re5et"
 # see 'man strftime' for details.
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications.
-source $ZSH/oh-my-zsh.sh
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Would you like to use another custom folder than $ZSH/custom?
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
-  zsh-syntax-highlighting
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
@@ -87,7 +85,6 @@ plugins=(
   vi-mode
   )
 
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -117,36 +114,21 @@ export HYPRSHOT_DIR="$HOME/screenshots/"
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-done
 
 ## Paths
-alias vim="nvim"
-alias code="nvim"
 export PATH="$BUN_INSTALL/bin:$PATH"
-alias keygen="openssl rand -base64 32 | tr -d '\n' | pbcopy && echo 'Key copied to clipboard.'"
 export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-alias shadd="pnpm dlx shadcn@latest add ${@}"
 export PATH=$PATH:$ANDROID_HOME/emulator
-alias l="lsd -1"
-alias la="lsd -lA"
 
 
 bindkey '^Y' autosuggest-accept
 
-  git add -A
-  git commit -m "$(date)"
-  git push
-
 # bun completions
-alias gittip="glow ~/.config/gittips.md"
-
-t() {
-
-    tmux
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -164,30 +146,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-v() { nvim "${1:-.}"; }
-alias ls="lsd"
-alias lt="lsd --tree"
-gitall() {
-}
-  if [[ -z "$1" ]]; then
-  else
-    tmux new-session -s "$1"
-  fi
-}
-ta() {
-  if [[ -z "$1" ]]; then
-    tmux attach
-  else
-    tmux attach -t "$1"
-  fi
-}
-alias tk="tmux kill-session -t"
-alias tls="tmux ls"
-alias p="cd ~/projects"
-alias zal="cat ~/.config/my-aliases"
-alias pc="wakeonlan 2C:F0:5D:8A:43:68"
-alias note='nvim -c "normal G" ~/notes.wiki/general.org'
-alias cd="z"
 for file in ~/.config/zsh/functions/*.zsh; do
   [[ -r "$file" ]] && source "$file"
 done
