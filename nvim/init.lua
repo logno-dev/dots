@@ -269,6 +269,15 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Disable treesitter highlighter for markdown buffers',
+  group = vim.api.nvim_create_augroup('markdown-no-treesitter', { clear = true }),
+  pattern = { 'markdown', 'mdx' },
+  callback = function(args)
+    pcall(vim.treesitter.stop, args.buf)
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -935,6 +944,7 @@ require('lazy').setup({
       auto_install = true,
       highlight = {
         enable = true,
+        disable = { 'markdown', 'markdown_inline' },
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
