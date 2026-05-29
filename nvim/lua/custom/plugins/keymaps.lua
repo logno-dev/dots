@@ -1,6 +1,6 @@
 -- [[ Harpoon ]]
 local harpoon = require 'harpoon'
-vim.keymap.set('n', '<leader>r', function()
+vim.keymap.set('n', '<leader>a', function()
   harpoon:list():add()
 end, { desc = 'Add current buffer to harpoon' })
 vim.keymap.set('n', '<leader>e', function()
