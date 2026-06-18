@@ -1,6 +1,6 @@
 -- [[ Harpoon ]]
 local harpoon = require 'harpoon'
-vim.keymap.set('n', '<leader>a', function()
+vim.keymap.set('n', '<leader>r', function()
   harpoon:list():add()
 end, { desc = 'Add current buffer to harpoon' })
 vim.keymap.set('n', '<leader>e', function()
@@ -257,10 +257,10 @@ local function toggle_checkbox()
   end
 end
 
-vim.keymap.set('n', '<leader>m', toggle_checkbox, { desc = 'Toggle [M]arkdown/Org checkbox' })
+vim.keymap.set('n', '<leader>mm', toggle_checkbox, { desc = 'Toggle [M]arkdown/Org checkbox' })
 
 -- Refresh all buffers
 
-vim.keymap.set('n', '<leader>r', ':bufdo e!<CR>', { desc = 'reload current buffer' })
+vim.keymap.set('n', '<leader>R', ':bufdo e!<CR>', { desc = 'reload current buffer' })
 
 return {}

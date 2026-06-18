@@ -55,7 +55,7 @@ Language server support with Mason for automatic installation.
 - `gW` - Open Workspace Symbols
 - `grt` - Goto Type Definition
 - `<leader>th` - Toggle Inlay Hints
-- `<leader>q` - Open diagnostic Quickfix list
+- `<leader>q` - Open diagnostic location list
 
 **Installed Servers**:
 - gopls (Go)
@@ -100,7 +100,7 @@ Git decorations and utilities.
 - `<leader>hd` - Git diff against index
 - `<leader>hD` - Git Diff against last commit
 - `<leader>tb` - Toggle git show blame line
-- `<leader>tD` - Toggle git show Deleted
+- `<leader>tD` - Preview deleted hunk inline
 
 ### DAP (Debugger)
 **Plugin**: mfussenegger/nvim-dap
@@ -124,24 +124,24 @@ Debug Adapter Protocol support.
 
 AI coding assistant integration (OpenCode).
 
-**Provider**: tmux
+**Provider**: tmux split pane when available, snacks terminal fallback otherwise
 
 **Keymaps**:
 - `<leader>aa` - Toggle OpenCode
+- `<leader>at` - Send `@this` context (normal/visual, no submit)
+- `<leader>av` - Send visual selection as `@this` context (visual only, no submit)
 - `<leader>as` - Select OpenCode Action
-- `<leader>at` - Send This (visual/normal)
-- `<leader>av` - Send Visual Selection
+- `<leader>ap` - Select OpenCode Prompt
 - `<leader>ah` - Toggle OpenCode (horizontal)
 - `<leader>al` - Toggle OpenCode (vertical)
-- `<leader>ap` - Select OpenCode Prompt
 - `<c-.>` - Toggle/Focus OpenCode
-- `<leader>ac` - Toggle OpenCode
-- `<C-k>` (terminal) - Scroll up in terminal
-- `<C-j>` (terminal) - Scroll down in terminal
-- `<C-a>` - Ask OpenCode
-- `<C-x>` - Execute OpenCode action
-- `go` - Add range to OpenCode
-- `goo` - Add line to OpenCode
+- `<leader>ac` - Toggle/Focus OpenCode
+- `<C-a>` (normal/visual) - Ask OpenCode (`@this`, with submit)
+- `<C-x>` (normal/visual) - Execute OpenCode action
+- `<C-k>` (terminal mode) - Scroll up in terminal
+- `<C-j>` (terminal mode) - Scroll down in terminal
+- `go` (normal/visual, expr) - Add range to OpenCode prompt
+- `goo` (normal, expr) - Add line to OpenCode prompt
 
 ## Editing Plugins
 
@@ -221,7 +221,10 @@ Better diagnostics list.
 Terminal management.
 
 **Keymaps**:
-- `<leader>t` - Toggle Terminal
+- `<leader>tt` - Toggle Terminal 1
+- `<leader>tn` - Open new terminal
+- `<leader>th` - Focus previous terminal
+- `<leader>tl` - Focus next terminal
 - `<Esc>` (terminal mode) - Exit to normal mode
 
 ### Lualine
@@ -354,8 +357,8 @@ Automatically detect tabstop and shiftwidth.
 ### Other
 - `<Esc>` - Clear search highlights
 - `<leader>us` - Toggle Spellcheck
-- `<leader>m` - Toggle Markdown/Org checkbox
-- `<Esc><Esc>` (terminal) - Exit terminal mode
+- `<leader>mm` - Toggle Markdown/Org checkbox
+- `<Esc>` (terminal mode) - Exit terminal mode
 
 ## Color Scheme
 

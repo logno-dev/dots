@@ -106,4 +106,4 @@ keyboardShortcuts:
 vimNavigation:
   enabled: true
   jumpToTopSequence: gg
-lastOpenedPath: /Users/logno/projects/backtrack
+lastOpenedPath: /Users/logno/.dotfiles/nvim

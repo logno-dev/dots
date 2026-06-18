@@ -5,7 +5,69 @@ return {
     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
   },
   config = function()
-    local fallback = require("opencode.terminal")
+    local fallback = (function()
+      local ok, module = pcall(require, "opencode.terminal")
+      if ok then
+        return module
+      end
+
+      local opencode_cmd = "opencode --port"
+      local ok_term, terminal = pcall(require, "snacks.terminal")
+      if not ok_term then
+        ok_term, terminal = pcall(function()
+          return require("snacks").terminal
+        end)
+      end
+      if not ok_term then
+        return {
+          open = function()
+            vim.notify("opencode.nvim: no terminal module available", vim.log.levels.ERROR, { title = "opencode" })
+          end,
+          close = function()
+          end,
+          toggle = function()
+            vim.notify("opencode.nvim: no terminal module available", vim.log.levels.ERROR, { title = "opencode" })
+          end,
+        }
+      end
+
+      local function terminal_opts(opts)
+        opts = opts or {}
+        local win_opts = {}
+        if opts.split == "right" then
+          win_opts.position = "right"
+          win_opts.width = opts.width
+        else
+          win_opts.position = "bottom"
+          win_opts.height = opts.height
+        end
+
+        return {
+          win = win_opts,
+          enter = false,
+        }
+      end
+
+      return {
+        open = function(cmd, opts)
+          terminal.open(cmd or opencode_cmd, terminal_opts(opts))
+        end,
+        close = function()
+          local term = terminal.get(opencode_cmd, { create = false })
+          if not term then
+            return
+          end
+          if term.close then
+            term:close()
+          elseif term.hide then
+            term:hide()
+          end
+        end,
+        toggle = function(cmd, opts)
+          terminal.toggle(cmd or opencode_cmd, terminal_opts(opts))
+        end,
+      }
+    end)()
 
     local function tmux_available()
       return vim.fn.executable("tmux") == 1 and vim.env.TMUX and vim.env.TMUX ~= ""
@@ -102,8 +164,24 @@ return {
     -- Keymaps matching your previous sidekick setup
     local opencode = require("opencode")
 
+    local function opencode_toggle()
+      if type(opencode.toggle) == "function" then
+        opencode.toggle()
+        return
+      end
+
+      if tmux_available() then
+        tmux_toggle()
+      else
+        fallback.toggle("opencode --port", {
+          split = "right",
+          width = math.floor(vim.o.columns * 0.35),
+        })
+      end
+    end
+
     -- Main toggle (was <leader>aa)
-    vim.keymap.set({ "n", "t" }, "<leader>aa", function() opencode.toggle() end, { desc = "Toggle OpenCode" })
+    vim.keymap.set({ "n", "t" }, "<leader>aa", opencode_toggle, { desc = "Toggle OpenCode" })
 
     -- Send context (was <leader>at for "this")
     vim.keymap.set({ "n", "x" }, "<leader>at", function() opencode.ask("@this: ", { submit = false }) end, { desc = "Send This to OpenCode" })
@@ -116,16 +194,16 @@ return {
     vim.keymap.set({ "n", "x" }, "<leader>ap", function() opencode.select() end, { desc = "Select OpenCode Prompt" })
 
     -- Horizontal split (was <leader>ah) - opencode.nvim handles this via server config
-    vim.keymap.set("n", "<leader>ah", function() opencode.toggle() end, { desc = "Toggle OpenCode (horizontal)" })
+    vim.keymap.set("n", "<leader>ah", opencode_toggle, { desc = "Toggle OpenCode (horizontal)" })
 
     -- Vertical split (was <leader>al) - opencode.nvim handles this via server config
-    vim.keymap.set("n", "<leader>al", function() opencode.toggle() end, { desc = "Toggle OpenCode (vertical)" })
+    vim.keymap.set("n", "<leader>al", opencode_toggle, { desc = "Toggle OpenCode (vertical)" })
 
     -- Switch focus (was <c-.>)
-    vim.keymap.set({ "n", "x", "i", "t" }, "<c-.>", function() opencode.toggle() end, { desc = "Toggle/Focus OpenCode" })
+    vim.keymap.set({ "n", "x", "i", "t" }, "<c-.>", opencode_toggle, { desc = "Toggle/Focus OpenCode" })
 
     -- Claude toggle (was <leader>ac) - opencode.nvim is opencode-specific, so this becomes another toggle
-    vim.keymap.set("n", "<leader>ac", function() opencode.toggle() end, { desc = "Toggle OpenCode" })
+    vim.keymap.set("n", "<leader>ac", opencode_toggle, { desc = "Toggle OpenCode" })
 
     -- Terminal scroll keymaps (these are terminal-mode generic, keep them)
     vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-u>i", { desc = "Scroll up in terminal" })
